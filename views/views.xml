@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="place_form_view">
+        <field name="name">place.form</field>
+        <field name="model">testtask.place</field>
+        <field name="arch" type="xml">
+            <form string="Place Form">
+                <sheet>
+                    <group>
+                        <field name="place_name"/>
+                        <field name="coordinates"/>
+                        <field name="city"/>
+                        <field name="country"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="place_search_view">
+        <field name="name">place.search</field>
+        <field name="model">testtask.place</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="place_name"/>
+                <field name="coordinates"/>
+                <field name="city"/>
+                <field name="country"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- window action -->
+    <!--
+        The following tag is an action definition for a "window action",
+        that is an action opening a view or a set of views
+    -->
+    <record model="ir.actions.act_window" id="place_list_action">
+        <field name="name">Places</field>
+        <field name="res_model">testtask.place</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create the first place
+            </p>
+        </field>
+    </record>
+
+    <record id="view_testtask_tree" model="ir.ui.view">
+        <field name="name">testtask.place.tree</field>
+        <field name="model">testtask.place</field>
+        <field name="arch" type="xml">
+            <tree string="Place">
+                <field name="place_name"/>
+                <field name="coordinates"/>
+                <field name="city"/>
+                <field name="country"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- top level menu: no parent -->
+    <menuitem id="main_testtask_menu" name="Test Task"/>
+    <!-- A first level in the left side menu is needed
+         before using action= attribute -->
+    <menuitem id="testtask_menu" name="Test Task"
+              parent="main_testtask_menu"/>
+    <!-- the following menuitem should appear *after*
+         its parent testtask_menu and *after* its
+         action place_list_action -->
+    <menuitem id="places_menu" name="Places" parent="testtask_menu"
+              action="place_list_action"/>
+    <!-- Full id location:
+         action="testtask.place_list_action"
+         It is not required when it is the same module -->
+
+</odoo>
