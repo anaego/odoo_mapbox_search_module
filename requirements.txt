@@ -23,7 +23,7 @@ Jinja2==2.10.1
 jmespath==0.10.0
 libsass==0.17.0
 lxml==3.7.1
-Mako==1.0.7
+Mako==1.2.2
 mapbox==0.18.0
 MarkupSafe==1.1.0
 mock==2.0.0
